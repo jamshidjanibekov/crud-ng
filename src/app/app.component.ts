@@ -11,13 +11,28 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MatToolbar, MatIcon, MatToolbarModule, MatIconButton, MatButton, MatDialogModule, MatFormFieldModule, MatSelectModule, MatDatepickerModule, MatRadioModule],
+  imports: [
+    RouterOutlet,
+    MatToolbar,
+    MatIcon,
+    MatToolbarModule,
+    MatIconButton,
+    MatButton,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatRadioModule,
+    ReactiveFormsModule,
+    FormsModule
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

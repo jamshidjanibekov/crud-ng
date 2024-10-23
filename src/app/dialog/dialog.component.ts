@@ -1,9 +1,10 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatIcon, MatIconModule} from "@angular/material/icon";
 import {MatOption, MatSelect} from "@angular/material/select";
+import {FormGroup, FormBuilder, Validators, ReactiveFormsModule} from "@angular/forms";
 import {
   MatDatepicker,
   MatDatepickerInput,
@@ -13,7 +14,6 @@ import {
 import {provideNativeDateAdapter} from "@angular/material/core";
 import {MatRadioButton, MatRadioGroup} from "@angular/material/radio";
 import {FormsModule} from "@angular/forms";
-import {endWith} from "rxjs";
 import {MatButton} from "@angular/material/button";
 
 interface Food{
@@ -37,14 +37,14 @@ interface Food{
     MatDatepickerToggle,
     MatDatepicker,
     MatDatepickerInput,
-    MatDatepickerModule, MatIconModule, MatRadioGroup, MatRadioButton, FormsModule, MatDialogActions, MatButton
+    MatDatepickerModule, MatIconModule, MatRadioGroup, MatRadioButton, FormsModule, MatDialogActions, MatButton, ReactiveFormsModule
   ],
   templateUrl: 'dialog.component.html',
   styleUrl: './dialog.component.css',
   providers: [provideNativeDateAdapter()],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DialogComponent {
+export class DialogComponent implements OnInit {
   foods: Food[] = [
     {value: 'iphone', viewValue: 'Iphone'},
     {value: 'samsung', viewValue: 'Samsung'},
@@ -52,6 +52,23 @@ export class DialogComponent {
   ];
   favoriteSeason: string | undefined;
   seasons: string[] = ['New', 'Second Hand', 'Old',];
-  protected readonly endWith = endWith;
+  productForm!: FormGroup;
+  constructor(private formBuilder: FormBuilder) {
+  }
+
+  ngOnInit(): void {
+    this.productForm = this.formBuilder.group({
+      productName:['', Validators.required],
+      category: ['', Validators.required],
+      condition:['', Validators.required],
+      price: ['', Validators.required],
+      comment: ['', Validators.required],
+      date: ['', Validators.required],
+    })
+  }
+    addProduct(){
+      console.log(this.productForm.value);
+
+    }
 }
 

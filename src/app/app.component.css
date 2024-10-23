@@ -3,16 +3,16 @@
 }
 
 .icon{
-  background: green;
+  background: #004F4F;
   color: white;
 }
 .add-btn{
-  background: green;
+  background: #004F4F;
   border: 1px solid wheat;
   padding: 10px 20px;
   border-radius: 5px;
 }
 .add-btn:hover{
-  background: red;
+  background: #004F4A;
   color: white;
 }
